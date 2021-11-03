@@ -1,14 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
-import reducer from './auth';
-import { thunkMiddleware } from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
+import { thunkMiddleware } from 'redux-thunk';
+import auth from './auth';
+// import {composeWithDevTools} from 'redux-devtools-extension';
 
-const store = createStore(
-  reducer,
-  applyMiddleware(
-    thunkMiddleware,
-    createLogger()
-  )
-);
+const reducer = combineReducers({ auth });
+const middleware = applyMiddleware(thunkMiddleware, createLogger({collapserd: true}));
+
+const store = createStore(reducer, middleware);
 
 export default store;
+export * from './auth';

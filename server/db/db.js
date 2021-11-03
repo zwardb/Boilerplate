@@ -1,6 +1,4 @@
-const Sequelize = require('sequelize');
-
-
+const Sequelize = require('sequelize')
 
 // database name and sequelize instance
 const databaseName = 'boiler_database';
